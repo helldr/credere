@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+use App\Probe;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,5 +14,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
+        Model::unguard();
+
+        DB::table('probes')->truncate();
+
+        $probes = [
+            ['id'=>1, 'direction'=>'D', 'xaxis'=>0,'yaxis'=>0]
+        ];
+
+        foreach($probes as $probe) {
+            Probe::create($probe);
+        }
+
+        Model::reguard();
     }
 }
