@@ -3,6 +3,9 @@ Abaixo segue instruções para o acesso à api web, assim como para instalação
 O sistema foi construído em PHP, utilizando o framework Laravel (*https://laravel.com/*) , banco de dados MySQL e servidor NGINX.
 Você pode usar o Postman (*https://www.postman.com/*) para fazer as chamadas à API.
 
+
+Obs.: Há uma collection do postman com as API's na raíz
+
 # Api Web
 
 Está hospedada em um contêiner no DigitalOcean.
