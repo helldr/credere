@@ -1,62 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Teste CREDERE
+Abaixo segue instruções para o acesso à api web, assim como para instalação local.
+O sistema foi construído em PHP, utilizando o framework Laravel (*https://laravel.com/*) , banco de dados MySQL e servidor NGINX.
+Você pode usar o Postman (*https://www.postman.com/*) para fazer as chamadas à API.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# Api Web
 
-## About Laravel
+Está hospedada em um contêiner no DigitalOcean.
+Endereço: http://188.166.65.159:8000 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Utilização
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Content-Type**: application/json
+ - **Accept**: application/json
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+HTTP requisição | Descrição | Exemplo
+------------- | ------------- | -------------
+**POST** /api/move | Move a sonda | *http://188.166.65.159:8000/api/move*
+**GET** /api/coords | Retorna a posição da sonda | *http://188.166.65.159:8000/api/coords*
+**POST** /api/init | Move a sonda para a posição inicial | *http://188.166.65.159:8000/api/init*
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+** Durante o deploy, uma sonda é criada. Não estava no escopo criação de novas sondas
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### **POST** /api/move
+Move a sonda para a posição desejada
 
-## Laravel Sponsors
+- ### Parametros esperados
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Nome | Tipo | Descrição | Exemplo
+------------- | ------------- | ------------- | -------------
+ **movimentos** | **Array** | body | {"movimentos": ["GD","M", "M"]}
 
-### Premium Partners
+### Body
+```json
+{
+    "movimentos": ["GD","M", "M"]
+}
+```
+### Exemplo de resposta
+```json
+{
+  "x": 2,
+  "y": 3,
+  "face": "D"
+}
+```
+### Exceções
+```json
+{'erro' => 'Um movimento inválido foi detectado. Tente novamente.'}
+{'erro' => 'A requisição deve ser um array.'}
+{'erro' => 'O comando fornecido ":comando" não é um comando válido.'}
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+```
 
-## Contributing
+### **POST** /api/init
+Move a sonda para a posição inicial
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- ### Parametros esperados
 
-## Code of Conduct
+- **Nenhum**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Exemplo de resposta
+```json
+{
+    "mensagem":  "A sonda retornou à posição inicial."
+}
+```
 
-## Security Vulnerabilities
+### **GET** /api/coords
+Retorna a posição da sonda
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- ### Parametros esperados
 
-## License
+- **Nenhum**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# credere
+### Exemplo de resposta
+```json
+{
+    "x":0,
+    "y":5,
+    "face":"B"
+}
+```
+
+
+##
+
+# Instalação local
+Recomendo usar o Docker para facilitar o processo. No site oficial *https://www.docker.com/* há um bom guia de como proceder a instalação.
+Você também vai precisar do Composer (*https://getcomposer.org/*) instalado e do git (*https://git-scm.com/*), para poder clonar o projeto. 
+
+
+Considerando que seu ambiente atende aos requisitos acima, acesse o endereço do repositório *https://github.com/helldr/credere* e faça um clone dele em um diretório de sua preferência.
+
+- git clone https://github.com/helldr/credere.git
+Isso irá criar uma cópia do sistema dentro da pasta 'credere'. Entre na pasta e difite o seguinte comando abaixo (Mac/Unix)
+- cp _env .env
+Ou, no windows, copie ou renomeie o arquivo _env para .env. Dentro dessa mesma pasta, execute o composer install
+- composer install
+Em seguida, é hora de montar a imagem do docker
+- docker-compose build
+E então, subir o ambiente:
+- docker-compose up -d
+A seguir, precisamos executar algumas ações no Laravel, que já está rodando dentro do contêiner. Os comandos abaixo servem, na ordem, para criar as variáveis de ambiente do Laravel, construir o banco de dados e popular com nossa sonda:
+- docker-compose exec app php artisan config:clear
+- docker-compose exec app php artisan migrate
+- docker-compose exec app php artisan db:seed
+
+Tudo pronto. Se tudo correu bem, seu contêiner estará acessível em *http://localhost:8000*
+
+Utilize o Postman para testar a API.
+
+## Utilização local
+
+A única diferença é o endereço a ser chamado
+
+- **Content-Type**: application/json
+ - **Accept**: application/json
+
+HTTP requisição | Descrição | Exemplo
+------------- | ------------- | -------------
+**POST** /api/move | Move a sonda | *http://localhost:8000/api/move*
+**GET** /api/coords | Retorna a posição da sonda | *http://localhost:8000/api/coords*
+**POST** /api/init | Move a sonda para a posição inicial | *http://localhost:8000/api/init*
+
+
+## Testes
+
+Os feature tests validam as respostas da API.  
+- docker-compose exec app php artisan test
+
+### Lembre-se que os comandos 'docker-compose' devem ser executados dentro da pasta de instalação do sistema
+
+
+### Autor
+Helder C Nascimento

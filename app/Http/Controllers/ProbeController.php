@@ -59,10 +59,10 @@ class ProbeController extends Controller
      */
     public function moveProbe(Request $request) {
         if(!is_array($request->movimentos)) // a requisição deve ser um array com os movimentos
-            return ['mensagem' => 'A requisição deve ser um array.'];
+            return ['erro' => 'A requisição deve ser um array.'];
 
         foreach($request->movimentos as $k=>$val) {
-            if(!$this->isValidCommand($val)) return 'O comando fornecido "'.$val.'" não é um comando válido.';
+            if(!$this->isValidCommand($val)) return ['erro' => 'O comando fornecido "'.$val.'" não é um comando válido.'];
             
             $executeMovement = $this->executeMovement($val);
 
