@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "19cd75c1-32b4-4e56-88da-391f28ba3830",
+		"name": "CREDERE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LOCAL COORDS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/coords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"coords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOCAL MOVE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"movimentos\": [\"GE\",\"M\",\"M\",\"M\",\"GE\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/move",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"move"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOCAL INIT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/init",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WEB COORDS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://188.166.65.159:8000/api/coords",
+					"protocol": "http",
+					"host": [
+						"188",
+						"166",
+						"65",
+						"159"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"coords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WEB INIT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://188.166.65.159:8000/api/init",
+					"protocol": "http",
+					"host": [
+						"188",
+						"166",
+						"65",
+						"159"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WEB MOVE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"movimentos\": [\"GE\",\"M\",\"M\",\"M\",\"GE\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://188.166.65.159:8000/api/move",
+					"protocol": "http",
+					"host": [
+						"188",
+						"166",
+						"65",
+						"159"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"move"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
